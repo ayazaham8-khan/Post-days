@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="theme-color" content="#07060f">
+<link rel="manifest" href="./manifest.json">
+<title>About Us — Global Days Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07060f;--s1:#0f0d1c;--c1:#1e1b30;--c2:#2a2748;--br:rgba(255,255,255,.07);--br2:rgba(255,255,255,.12);--ac:#6d5efc;--ac2:#8b7dfd;--ac3:#a99ffe;--jade:#2fd4a0;--gold:#f4a831;--rose:#f7607a;--tx:#eeeaff;--tx2:#9490b8;--tx3:#524f70;--font:'Outfit',sans-serif}
+body{font-family:var(--font);background:var(--bg);color:var(--tx);min-height:100vh;max-width:680px;margin:0 auto;padding:0 0 60px}
+.topbar{display:flex;align-items:center;gap:14px;padding:16px 20px;border-bottom:1px solid var(--br);position:sticky;top:0;background:rgba(7,6,15,.95);backdrop-filter:blur(20px);z-index:10}
+.back-btn{width:38px;height:38px;border-radius:10px;background:var(--c1);border:1px solid var(--br);display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;text-decoration:none;color:var(--tx);flex-shrink:0;transition:all .15s}
+.back-btn:hover{background:var(--ac)}
+.logo{font-size:16px;font-weight:700;background:linear-gradient(135deg,#fff,#a99ffe);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+/* Hero */
+.hero{background:linear-gradient(145deg,#1a1634,#201d3c,#141230);padding:44px 24px 36px;border-bottom:1px solid rgba(109,94,252,.2);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:250px;height:250px;background:radial-gradient(circle,rgba(109,94,252,.18),transparent);pointer-events:none}
+.hero-em{font-size:56px;display:block;margin-bottom:16px}
+.hero-title{font-size:32px;font-weight:900;letter-spacing:-.8px;line-height:1.1;background:linear-gradient(135deg,#fff 30%,var(--ac3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+.hero-sub{font-size:14px;color:var(--tx2);line-height:1.7;max-width:480px}
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:20px}
+.stat{background:var(--c1);border:1px solid var(--br2);border-radius:16px;padding:16px;text-align:center}
+.stat-num{font-size:26px;font-weight:900;background:linear-gradient(135deg,var(--ac2),var(--jade));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;margin-bottom:4px}
+.stat-label{font-size:10px;color:var(--tx3);font-weight:600;text-transform:uppercase;letter-spacing:.8px}
+/* Content */
+.content{padding:0 20px}
+.section{background:var(--c1);border:1px solid var(--br);border-radius:18px;padding:20px;margin-bottom:14px}
+.sec-label{font-size:10px;font-weight:700;color:var(--ac2);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.sec-title{font-size:18px;font-weight:800;margin-bottom:10px;letter-spacing:-.3px}
+.sec-text{font-size:13px;color:var(--tx2);line-height:1.8}
+/* Mission */
+.mission{background:linear-gradient(145deg,#1a1634,#201d3c);border:1px solid rgba(109,94,252,.22);border-radius:20px;padding:24px;margin-bottom:14px;position:relative;overflow:hidden}
+.mission::before{content:'';position:absolute;bottom:-40px;right:-40px;width:180px;height:180px;background:radial-gradient(circle,rgba(47,212,160,.12),transparent);pointer-events:none}
+.mission-quote{font-size:17px;font-weight:700;line-height:1.55;color:var(--tx);margin-bottom:12px;font-style:italic}
+.mission-quote::before{content:'\201C';font-size:36px;color:var(--ac);line-height:0;vertical-align:-.5em;margin-right:4px}
+.mission-author{font-size:12px;color:var(--tx3);font-weight:600}
+/* Features */
+.features{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.feat{background:var(--c1);border:1px solid var(--br);border-radius:14px;padding:16px}
+.feat-ico{font-size:24px;margin-bottom:8px}
+.feat-title{font-size:13px;font-weight:700;margin-bottom:4px}
+.feat-desc{font-size:11px;color:var(--tx3);line-height:1.5}
+/* CTA */
+.cta{background:linear-gradient(135deg,var(--ac),var(--ac2));border-radius:18px;padding:24px;text-align:center;margin-bottom:14px}
+.cta-title{font-size:18px;font-weight:800;color:#fff;margin-bottom:6px}
+.cta-sub{font-size:12px;color:rgba(255,255,255,.75);line-height:1.6;margin-bottom:16px}
+.cta-btn{display:inline-block;padding:11px 28px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:99px;color:#fff;font-size:13px;font-weight:700;text-decoration:none;transition:all .15s;font-family:var(--font)}
+.cta-btn:hover{background:rgba(255,255,255,.25)}
+/* Footer */
+.footer{text-align:center;padding:30px 20px 0;font-size:12px;color:var(--tx3)}
+.footer a{color:var(--ac2);text-decoration:none;margin:0 8px}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="./index.html" class="back-btn">←</a>
+  <div class="logo">🌍 Global Days Tracker</div>
+</div>
+
+<div class="hero">
+  <span class="hero-em">🌍</span>
+  <div class="hero-title">About Global<br>Days Tracker</div>
+  <div class="hero-sub">A creator-focused tool that helps content creators, educators, and curious minds never miss an important global day — and always have something meaningful to post.</div>
+</div>
+
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">200+</div>
+    <div class="stat-label">Events</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">10</div>
+    <div class="stat-label">Categories</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">∞</div>
+    <div class="stat-label">Ideas</div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="mission">
+    <div class="mission-quote">Every single day has a story worth telling. We built Global Days Tracker so you never run out of meaningful things to share with the world.</div>
+    <div class="mission-author">— The Global Days Tracker Team</div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">Our Story</div>
+    <div class="sec-title">Why We Built This</div>
+    <div class="sec-text">Content creators, social media managers, and educators often struggle with one question: <em>"What should I post today?"</em><br><br>
+    We realized that every single day has internationally recognized significance — from World Health Day to International Women's Day to World Chocolate Day. Yet most people never know about them until it is too late to create timely content.<br><br>
+    Global Days Tracker was built to solve this problem. We curated 200+ international observance days, added creator-ready hooks and captions, and wrapped it all in a beautiful, fast mobile app that works even offline.</div>
+  </div>
+
+  <div class="features">
+    <div class="feat">
+      <div class="feat-ico">🔥</div>
+      <div class="feat-title">Creator Mode</div>
+      <div class="feat-desc">Viral hooks, captions, and hashtags for every event</div>
+    </div>
+    <div class="feat">
+      <div class="feat-ico">📅</div>
+      <div class="feat-title">Smart Dates</div>
+      <div class="feat-desc">Today, tomorrow, this week — always sorted correctly</div>
+    </div>
+    <div class="feat">
+      <div class="feat-ico">📱</div>
+      <div class="feat-title">Install as App</div>
+      <div class="feat-desc">PWA — works offline, installs on any device</div>
+    </div>
+    <div class="feat">
+      <div class="feat-ico">🔍</div>
+      <div class="feat-title">Smart Search</div>
+      <div class="feat-desc">Find any event instantly by keyword or category</div>
+    </div>
+    <div class="feat">
+      <div class="feat-ico">🔖</div>
+      <div class="feat-title">Save Events</div>
+      <div class="feat-desc">Bookmark your favorite days for quick access</div>
+    </div>
+    <div class="feat">
+      <div class="feat-ico">↗</div>
+      <div class="feat-title">Easy Sharing</div>
+      <div class="feat-desc">Share to WhatsApp, Twitter, Instagram in one tap</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">Our Mission</div>
+    <div class="sec-title">Making Every Day Count</div>
+    <div class="sec-text">We believe that awareness creates change. When more people know about World Mental Health Day, more conversations happen. When creators post about World Environment Day, more people take action.<br><br>
+    Our mission is to make global awareness days accessible to everyone — from professional content creators to curious students — and to help translate awareness into action and content.</div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">For Creators</div>
+    <div class="sec-title">Built with Creators in Mind</div>
+    <div class="sec-text">Whether you manage a brand's social media, run a YouTube channel, or just want to post meaningful content — Global Days Tracker gives you:<br><br>
+    <strong>✨ Ready-to-use viral hooks</strong> crafted to grab attention<br>
+    <strong>✍️ Platform-optimized captions</strong> for Instagram, Twitter, LinkedIn<br>
+    <strong># Curated hashtag packs</strong> to maximize reach<br>
+    <strong>📅 Always-current dates</strong> so you're always timely, never late</div>
+  </div>
+
+  <div class="cta">
+    <div class="cta-title">Ready to Never Miss a Day?</div>
+    <div class="cta-sub">Join thousands of creators who use Global Days Tracker to stay consistent, relevant, and inspired every single day.</div>
+    <a href="./index.html" class="cta-btn">Open the App →</a>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">Contact</div>
+    <div class="sec-title">Get in Touch</div>
+    <div class="sec-text">Have a suggestion, found a bug, or want to partner with us? We would love to hear from you.<br><br>
+    📧 <strong><a href="mailto:ayazaham8@gmail.com" style="color:var(--ac2);text-decoration:none">ayazaham8@gmail.com</a></strong></div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>© 2026 Global Days Tracker. All rights reserved.</p>
+  <p style="margin-top:10px">
+    <a href="./index.html">Home</a>
+    <a href="./privacy.html">Privacy Policy</a>
+    <a href="./contact.html">Contact</a>
+  </p>
+</div>
+
+</body>
+</html>

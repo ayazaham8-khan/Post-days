@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="theme-color" content="#07060f">
+<link rel="manifest" href="./manifest.json">
+<title>Contact Us — Global Days Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#07060f;--s1:#0f0d1c;--c1:#1e1b30;--c2:#2a2748;--br:rgba(255,255,255,.07);--br2:rgba(255,255,255,.12);--ac:#6d5efc;--ac2:#8b7dfd;--ac3:#a99ffe;--jade:#2fd4a0;--gold:#f4a831;--tx:#eeeaff;--tx2:#9490b8;--tx3:#524f70;--font:'Outfit',sans-serif}
+body{font-family:var(--font);background:var(--bg);color:var(--tx);min-height:100vh;max-width:680px;margin:0 auto;padding:0 0 60px}
+.topbar{display:flex;align-items:center;gap:14px;padding:16px 20px;border-bottom:1px solid var(--br);position:sticky;top:0;background:rgba(7,6,15,.95);backdrop-filter:blur(20px);z-index:10}
+.back-btn{width:38px;height:38px;border-radius:10px;background:var(--c1);border:1px solid var(--br);display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;text-decoration:none;color:var(--tx);flex-shrink:0;transition:all .15s}
+.back-btn:hover{background:var(--ac)}
+.logo{font-size:16px;font-weight:700;background:linear-gradient(135deg,#fff,#a99ffe);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero{background:linear-gradient(145deg,#1a1634,#201d3c);padding:40px 24px 32px;border-bottom:1px solid rgba(109,94,252,.2);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50px;right:-50px;width:220px;height:220px;background:radial-gradient(circle,rgba(47,212,160,.12),transparent);pointer-events:none}
+.hero-em{font-size:52px;display:block;margin-bottom:14px}
+.hero-title{font-size:30px;font-weight:900;letter-spacing:-.6px;background:linear-gradient(135deg,#fff 30%,var(--ac3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.hero-sub{font-size:13px;color:var(--tx2);line-height:1.7;max-width:460px}
+.content{padding:20px}
+/* Contact cards */
+.contact-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:20px}
+.contact-card{background:var(--c1);border:1px solid var(--br2);border-radius:18px;padding:20px;display:flex;align-items:center;gap:16px;text-decoration:none;transition:all .2s;cursor:pointer}
+.contact-card:hover{border-color:var(--ac);transform:translateY(-2px)}
+.contact-card:active{transform:scale(.98)}
+.cc-ico{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.cc-ico-email{background:rgba(109,94,252,.15)}
+.cc-ico-wa{background:rgba(47,212,160,.12)}
+.cc-ico-tw{background:rgba(66,194,255,.1)}
+.cc-body{flex:1}
+.cc-label{font-size:10px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
+.cc-title{font-size:15px;font-weight:700;color:var(--tx);margin-bottom:2px}
+.cc-sub{font-size:11px;color:var(--tx2)}
+.cc-arrow{font-size:18px;color:var(--tx3);flex-shrink:0}
+/* Form */
+.form-section{background:var(--c1);border:1px solid var(--br);border-radius:20px;padding:22px;margin-bottom:14px}
+.form-title{font-size:17px;font-weight:700;margin-bottom:4px}
+.form-sub{font-size:12px;color:var(--tx2);margin-bottom:18px;line-height:1.5}
+.form-group{margin-bottom:14px}
+.form-label{font-size:11px;font-weight:700;color:var(--tx3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px;display:block}
+.form-input,.form-textarea,.form-select{width:100%;background:var(--s1);border:1px solid var(--br2);border-radius:11px;padding:12px 14px;color:var(--tx);font-size:13px;font-family:var(--font);outline:none;transition:border-color .2s;-webkit-appearance:none}
+.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--ac)}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--tx3)}
+.form-textarea{resize:vertical;min-height:110px;line-height:1.6}
+.form-select{cursor:pointer}
+.form-select option{background:var(--s1);color:var(--tx)}
+.submit-btn{width:100%;padding:14px;border-radius:12px;background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;font-size:14px;font-weight:700;border:none;cursor:pointer;font-family:var(--font);transition:all .15s;box-shadow:0 4px 20px rgba(109,94,252,.35)}
+.submit-btn:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(109,94,252,.45)}
+.submit-btn:active{transform:scale(.97)}
+/* FAQ */
+.faq-section{background:var(--c1);border:1px solid var(--br);border-radius:18px;padding:20px;margin-bottom:14px}
+.faq-title{font-size:16px;font-weight:700;margin-bottom:14px}
+.faq-item{padding:12px 0;border-bottom:1px solid var(--br)}
+.faq-item:last-child{border-bottom:none;padding-bottom:0}
+.faq-q{font-size:13px;font-weight:600;color:var(--tx);margin-bottom:5px}
+.faq-a{font-size:12px;color:var(--tx2);line-height:1.6}
+.faq-a a{color:var(--ac2);text-decoration:none}
+/* Success message (hidden by default) */
+#successMsg{display:none;background:rgba(47,212,160,.12);border:1px solid rgba(47,212,160,.25);border-radius:12px;padding:16px;text-align:center;margin-top:12px}
+#successMsg .s-em{font-size:32px;display:block;margin-bottom:8px}
+#successMsg .s-title{font-size:15px;font-weight:700;color:var(--jade);margin-bottom:4px}
+#successMsg .s-sub{font-size:12px;color:var(--tx2)}
+/* Footer */
+.footer{text-align:center;padding:30px 20px 0;font-size:12px;color:var(--tx3)}
+.footer a{color:var(--ac2);text-decoration:none;margin:0 8px}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="./index.html" class="back-btn">←</a>
+  <div class="logo">🌍 Global Days Tracker</div>
+</div>
+
+<div class="hero">
+  <span class="hero-em">💬</span>
+  <div class="hero-title">Get in Touch</div>
+  <div class="hero-sub">Have a question, suggestion, or just want to say hello? We'd love to hear from you. We typically respond within 24–48 hours.</div>
+</div>
+
+<div class="content">
+
+  <!-- Direct Contact Options -->
+  <div class="contact-grid">
+    <a href="mailto:ayazaham8@gmail.com" class="contact-card">
+      <div class="cc-ico cc-ico-email">📧</div>
+      <div class="cc-body">
+        <div class="cc-label">Email Us</div>
+        <div class="cc-title">ayazaham8@gmail.com</div>
+        <div class="cc-sub">Best for detailed questions & support</div>
+      </div>
+      <div class="cc-arrow">→</div>
+    </a>
+
+    <a href="https://wa.me/?text=Hi! I'm reaching out about Global Days Tracker." target="_blank" class="contact-card">
+      <div class="cc-ico cc-ico-wa">💬</div>
+      <div class="cc-body">
+        <div class="cc-label">WhatsApp</div>
+        <div class="cc-title">Send a Quick Message</div>
+        <div class="cc-sub">Fast responses for simple questions</div>
+      </div>
+      <div class="cc-arrow">→</div>
+    </a>
+
+    <a href="https://twitter.com/intent/tweet?text=Hey @GlobalDaysTracker — " target="_blank" class="contact-card">
+      <div class="cc-ico cc-ico-tw">🐦</div>
+      <div class="cc-body">
+        <div class="cc-label">X (Twitter)</div>
+        <div class="cc-title">Tweet at Us</div>
+        <div class="cc-sub">For feedback, shoutouts & suggestions</div>
+      </div>
+      <div class="cc-arrow">→</div>
+    </a>
+  </div>
+
+  <!-- Contact Form -->
+  <div class="form-section">
+    <div class="form-title">✉️ Send Us a Message</div>
+    <div class="form-sub">Fill in the form below and we'll get back to you as soon as possible.</div>
+
+    <form id="contactForm" onsubmit="submitForm(event)">
+      <div class="form-group">
+        <label class="form-label">Your Name</label>
+        <input type="text" class="form-input" id="nameInput" placeholder="Enter your name" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input type="email" class="form-input" id="emailInput" placeholder="your@email.com" required>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Subject</label>
+        <select class="form-select" id="subjectInput">
+          <option value="">Select a subject…</option>
+          <option value="bug">🐛 Report a Bug</option>
+          <option value="feature">💡 Feature Request</option>
+          <option value="event">📅 Missing Event / Correction</option>
+          <option value="business">💼 Business / Partnership</option>
+          <option value="general">💬 General Question</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="form-textarea" id="messageInput" placeholder="Tell us what's on your mind…" required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Send Message 🚀</button>
+    </form>
+
+    <div id="successMsg">
+      <span class="s-em">🎉</span>
+      <div class="s-title">Message Sent!</div>
+      <div class="s-sub">Thank you for reaching out. We'll reply to your email within 48 hours.</div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <div class="faq-title">❓ Frequently Asked Questions</div>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I install the app on my phone?</div>
+      <div class="faq-a">Open the app in Chrome, tap the 3-dot menu (⋮), and select "Add to Home Screen". It will install like a native app with an icon on your home screen.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Does the app work without internet?</div>
+      <div class="faq-a">Yes! After your first visit, the app caches all content and works fully offline. Perfect for travel or poor connectivity.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can I suggest a missing international day?</div>
+      <div class="faq-a">Absolutely! Send us an email at <a href="mailto:ayazaham8@gmail.com">ayazaham8@gmail.com</a> with the event name, date, and description. We review all suggestions.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Is the app free to use?</div>
+      <div class="faq-a">The core app is free. We're working on a Pro tier with advanced creator features like unlimited hooks, captions, and AI-generated content.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I report incorrect event information?</div>
+      <div class="faq-a">Use the form above with subject "Missing Event / Correction" and we will verify and update the information as quickly as possible.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>© 2026 Global Days Tracker. All rights reserved.</p>
+  <p style="margin-top:10px">
+    <a href="./index.html">Home</a>
+    <a href="./about.html">About Us</a>
+    <a href="./privacy.html">Privacy Policy</a>
+  </p>
+</div>
+
+<script>
+function submitForm(e) {
+  e.preventDefault();
+  var name = document.getElementById('nameInput').value.trim();
+  var email = document.getElementById('emailInput').value.trim();
+  var subject = document.getElementById('subjectInput').value;
+  var message = document.getElementById('messageInput').value.trim();
+
+  if(!name || !email || !message) {
+    alert('Please fill in all required fields.');
+    return;
+  }
+
+  /* Build mailto link */
+  var subjectLine = 'GDT Contact: ' + (subject || 'General');
+  var body = 'Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message;
+  var mailtoLink = 'mailto:ayazaham8@gmail.com?subject=' +
+    encodeURIComponent(subjectLine) + '&body=' + encodeURIComponent(body);
+
+  window.open(mailtoLink, '_blank');
+
+  /* Show success message */
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('successMsg').style.display = 'block';
+}
+</script>
+
+</body>
+</html>
